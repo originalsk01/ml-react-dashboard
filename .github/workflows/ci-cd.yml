@@ -4,8 +4,7 @@
 name: Continous Integration and Delivery
 on:
   push:
-    branches:
-      - main, staging
+    branches: [main, staging]
 jobs:
   test_and_build:
     runs-on: ubuntu-latest
@@ -42,8 +41,6 @@ jobs:
           firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT_ML_DASHBOARD_PRODUCTION }}'
           channelId: live
           projectId: ml-dashboard-production
-
-
   deploy_to_staging:
     if: github.ref == 'refs/heads/staging'
     needs:  test_and_build
