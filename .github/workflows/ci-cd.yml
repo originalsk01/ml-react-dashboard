@@ -5,7 +5,7 @@ name: Continous Integration and Delivery
 on:
   push:
     branches:
-      - main
+      - main, staging
 jobs:
   test_and_build:
     runs-on: ubuntu-latest
@@ -42,3 +42,28 @@ jobs:
           firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT_ML_DASHBOARD_PRODUCTION }}'
           channelId: live
           projectId: ml-dashboard-production
+
+
+  deploy_to_staging:
+    if: github.ref == 'refs/heads/staging'
+    needs:  test_and_build
+    runs-on:  ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+      - name: Download build artifact
+        uses: actions/download-artifact@v2
+        with:
+          name: build
+          path: build
+      - name: Deploy to firebase hosting
+        uses: FirebaseExtended/action-hosting-deploy@v0
+        with:
+          repoToken: '${{ secrets.GITHUB_TOKEN }}'
+          firebaseServiceAccount: '${{ secrets.FIREBASE_STAGING_ACCOUNT_JSON_KEY}}'
+          channelId: live
+          projectId: ml-dashboard-staging
+
+
+
+        
