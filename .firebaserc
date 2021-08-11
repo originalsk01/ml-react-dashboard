@@ -1,5 +1,6 @@
 {
   "projects": {
-    "default": "ml-dashboard-production"
+    "default": "ml-dashboard-production",
+    "staging": "ml-dashboard-staging"
   }
 }

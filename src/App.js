@@ -1,4 +1,5 @@
 import './App.css';
+import logo from  './logo.svg'
 
 function App() {
   return (
@@ -10,6 +11,7 @@ function App() {
       height: '100vh',
       fontFamily: 'roboto'
     }}>
+      <img src={logo} alt="Quality logo"/>
       <h1 style={{
         color: '#6ec177',
         margin: 0
