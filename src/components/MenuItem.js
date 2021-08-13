@@ -18,13 +18,13 @@ const MenuItem = ({label, icon, activeIcon, path}) => {
     const [active, setActive] = useState(true);
     const location = useLocation()
 
-    useEffect(() =>{
+    useEffect(() => {
         if(path === '/sign-out'){
             setActive(true)
             return;
         }
         setActive(location.pathname === path)
-    }, [location]);
+    }, [location, path]);
 
     return ( 
     <ListItem 

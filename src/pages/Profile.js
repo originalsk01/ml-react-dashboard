@@ -1,20 +1,6 @@
 import { Card, CardHeader, Typography } from '@material-ui/core';
 import React from 'react'
 
-const states = [
-    {
-      value: 'alabama',
-      label: 'Alabama'
-    },
-    {
-      value: 'new-york',
-      label: 'New York'
-    },
-    {
-      value: 'san-francisco',
-      label: 'San Francisco'
-    }
-  ];
 
 const Profile = () => {
     return (
